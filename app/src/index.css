@@ -1,0 +1,115 @@
+body {
+ padding: 0;
+ margin: 0;
+ font-family: 'Montserrat', sans-serif;
+}
+
+:root {
+   --clr-primary-1: #BF40BF;
+   --clr-primary-2: #5D3FD3;
+}
+
+section {
+   background-image: linear-gradient(to bottom right, #BF40BF, #5D3FD3);
+   background-repeat: no-repeat;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   height: 100vh;
+}
+
+.login-container {
+   border: 2px solid #fff;
+   border-radius: 10px;
+   padding: 20px;
+   width: 70vw;
+   max-width: 350px;
+   margin: 2rem 0;
+   background-color: white;
+}
+
+.login-title {
+   font-size: 2rem;
+   font-weight: bold;
+   text-align: center;
+   text-transform: capitalize;
+   letter-spacing: 1px;
+}
+
+input {
+   border: none;
+   border-bottom: 2px solid black;
+   background-color: transparent;
+   outline: none;
+   font-size: 1rem;
+   padding: 0.5rem;
+   width: 100%;
+   margin-bottom: 1rem;
+   color: var(--clr-primary-2);
+}
+
+#password,
+#email {
+   width: 95.5%;
+   margin-top: 1rem;
+}
+
+#login {
+   background-image: linear-gradient(to right, #BF40BF, #5D3FD3);
+   border-bottom: none;
+   margin-top: 1rem;
+   padding: 1rem;
+   font-weight: 500;
+   font-size: 1.2rem;
+   color: #fff;
+}
+
+.signup-info {
+   margin: 3rem;
+   font-size: .8rem;
+}
+
+.login-container span {
+   color: #5D3FD3;
+   font-weight: bold;
+}
+
+
+@media screen and (min-width: 600px) {
+   body, html {
+      font-size: 15px;
+   }
+}
+
+@media screen and (min-width: 1000px) {
+   
+   .login-container span {
+      cursor: pointer;
+   }
+
+   #login {
+      padding: 1rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+   }
+}
+
+   @media screen and (min-width: 1400px) {
+   body, html {
+      font-size: 20px;
+   }
+
+   input {
+      font-size: .8rem;
+   }
+
+   #login {
+      font-size: 1.2rem;
+      padding: .8rem;
+   }
+   
+   .signup-info {
+      font-size: .7rem;
+   }
+} 
