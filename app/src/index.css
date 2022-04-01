@@ -5,111 +5,210 @@ body {
 }
 
 :root {
-   --clr-primary-1: #BF40BF;
-   --clr-primary-2: #5D3FD3;
+ --clr-primary-1: #BF40BF;
+ --clr-primary-2: #5D3FD3;
 }
 
-section {
-   background-image: linear-gradient(to bottom right, #BF40BF, #5D3FD3);
-   background-repeat: no-repeat;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-   height: 100vh;
+
+/*=========================================================
+LOGIN_PAGE STYLES
+==========================================================*/
+#login-container,
+#signup-container {
+ background-image: linear-gradient(to bottom right, #BF40BF, #5D3FD3);
+ background-repeat: no-repeat;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ height: 100vh;
 }
 
 .login-container {
-   border: 2px solid #fff;
-   border-radius: 10px;
-   padding: 20px;
-   width: 70vw;
-   max-width: 350px;
-   margin: 2rem 0;
-   background-color: white;
+ border: 2px solid #fff;
+ border-radius: 10px;
+ padding: 20px;
+ width: 70vw;
+ max-width: 350px;
+ margin: 2rem 0;
+ background-color: white;
 }
 
 .login-title {
-   font-size: 2rem;
-   font-weight: bold;
-   text-align: center;
-   text-transform: capitalize;
-   letter-spacing: 1px;
+ font-size: 2rem;
+ font-weight: bold;
+ text-align: center;
+ text-transform: capitalize;
+ letter-spacing: 1px;
 }
 
-input {
-   border: none;
-   border-bottom: 2px solid black;
-   background-color: transparent;
-   outline: none;
-   font-size: 1rem;
-   padding: 0.5rem;
-   width: 100%;
-   margin-bottom: 1rem;
-   color: var(--clr-primary-2);
+.login-container input {
+ border: none;
+ border-bottom: 1px solid black;
+ background-color: transparent;
+ outline: none;
+ font-size: 1rem;
+ padding: 0.5rem;
+ width: 100%;
+ margin-bottom: 1rem;
+ color: var(--clr-primary-2);
 }
 
-#password,
-#email {
-   width: 95.5%;
-   margin-top: 1rem;
+.login-container #password,
+.login-container #email {
+ width: 95.5%;
+ margin-top: 1rem;
 }
 
-#login {
-   background-image: linear-gradient(to right, #BF40BF, #5D3FD3);
-   border-bottom: none;
-   margin-top: 1rem;
-   padding: 1rem;
-   font-weight: 500;
-   font-size: 1.2rem;
-   color: #fff;
+.login-container #login {
+ background-image: linear-gradient(to right, #BF40BF, #5D3FD3);
+ border-bottom: none;
+ margin-top: 2rem;
+ padding: 1rem;
+ font-weight: 500;
+ font-size: 1.2rem;
+ color: #fff;
+ border-radius: 5px;
 }
 
 .signup-info {
-   margin: 3rem;
-   font-size: .8rem;
+ margin: 2rem;
+ font-size: .8rem;
+ display: flex;
+ justify-content:  center;
 }
 
 .login-container span {
-   color: #5D3FD3;
-   font-weight: bold;
+ color: #5D3FD3;
+ font-weight: bold;
+ margin-left: .5rem;
+}
+
+/*=========================================================
+SIGNUP_PAGE STYLES
+==========================================================*/
+.signup-container {
+ border: 2px solid #fff;
+ border-radius: 10px;
+ padding: 20px;
+ width: 70vw;
+ max-width: 350px;
+ margin: 2rem 0;
+ background-color: white;
+}
+
+.signup-container h1 {
+ font-size: 1.5rem;
+ font-weight: bold;
+ text-align: center;
+ text-transform: uppercase;
+ letter-spacing: 1px;
+}
+
+.signup-container .names {
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+ justify-content: center;
+}
+
+.signup-container #firstname,
+.signup-container #lastname {
+ border: none;
+ border-bottom: 1px solid black;
+ background-color: transparent;
+ outline: none;
+ font-size: 1rem;
+ padding: .5rem 0;
+ width: 47%;
+ margin-bottom: 1rem;
+ color: var(--clr-primary-2);
+}
+
+.signup-container #lastname {
+ margin-left: 1rem;
+}
+
+.signup-container #email,
+.signup-container #password,
+.signup-container #retype-password {
+ width: 98%;
+ margin-top: 1rem;
+ margin-bottom: 1rem;
+ border: none;
+ border-bottom: 1px solid black;
+ background-color: transparent;
+ outline: none;
+ font-size: 1rem;
+ padding: 0.5rem 0;
+ margin-bottom: 1rem;
+ color: var(--clr-primary-2);
+}
+
+.signup-container #signup {
+ background-image: linear-gradient(to right, #BF40BF, #5D3FD3);
+ border-bottom: none;
+ margin-top: 1rem;
+ padding: 1rem;
+ font-weight: 500;
+ font-size: 1.2rem;
+ color: #fff;
+ align-self: center;
+ width: 100%;
+ border-radius: 5px;
+ border: none;
+ text-transform: uppercase;
+ letter-spacing: 1px;
+ margin-bottom: 2rem;
+ margin-top: 2rem;
 }
 
 
 @media screen and (min-width: 600px) {
-   body, html {
-      font-size: 15px;
-   }
+
+ body,
+ html {
+  font-size: 18px;
+ }
 }
 
 @media screen and (min-width: 1000px) {
-   
-   .login-container span {
-      cursor: pointer;
-   }
 
-   #login {
-      padding: 1rem;
-      font-size: 1.2rem;
-      cursor: pointer;
-   }
+ .login-container span {
+  cursor: pointer;
+ }
+
+ .login-container span:hover {
+  text-decoration: underline;
+ }
+
+ .login-container #login,
+ .signup-container #signup {
+  padding: 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+ }
 }
 
-   @media screen and (min-width: 1400px) {
-   body, html {
-      font-size: 20px;
-   }
+@media screen and (min-width: 1400px) {
 
-   input {
-      font-size: .8rem;
-   }
+ body,
+ html {
+  font-size: 20px;
+ }
 
-   #login {
-      font-size: 1.2rem;
-      padding: .8rem;
-   }
-   
-   .signup-info {
-      font-size: .7rem;
-   }
-} 
+ .login-container input,
+ .signup-container input {
+  font-size: .8rem;
+ }
+
+ .login-container #login,
+ .signup-container #signup {
+  font-size: 1.2rem;
+  padding: .8rem;
+ }
+
+ .signup-info {
+  font-size: .7rem;
+ }
+}

@@ -1,9 +1,16 @@
 import React from 'react'
-import '../index.css'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
+
+  const navigate = useNavigate()
+
+  const toSignupPage = () => {
+    navigate('/signup-page')
+  }
+
  return (
-  <section>
+  <section id='login-container'>
     <div className="login-container">
 
       <h1 className="login-title">login</h1>
@@ -29,7 +36,7 @@ const Login = () => {
       </form>
 
       <div className="signup-info">
-          Don't have an account? <span>Sign up</span>
+          Don't have an account? <span onClick={toSignupPage}>Sign up</span>
       </div>
 
     </div>
