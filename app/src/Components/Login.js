@@ -1,12 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 const Login = () => {
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   const navigate = useNavigate()
 
   const toSignupPage = () => {
     navigate('/signup-page')
+  }
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      setPassword('')
+      setEmail('')
+    } catch (error) {
+      console.log(error);
+    }
   }
 
  return (
@@ -15,23 +29,30 @@ const Login = () => {
 
       <h1 className="login-title">login</h1>
 
-      <form action="">
-        <LoginInput
+      <form onSubmit={onSubmit}>
+        <input
          placeholder='Email'
+         //autoComplete='off'
          type='text'
          id='email'
+         value={email}
+         onChange={e => setEmail(e.target.value)}
+         required
         />
 
-        <LoginInput
+        <input
          placeholder='Password'
-         type='text'
+         type='password'
          id='password'
+         value={password}
+         onChange={e => setPassword(e.target.value)}
+         required
         />
 
-        <LoginInput
-         value='Login'
-         type='submit'
-         id='login'
+        <input
+          value='Login'
+          type='submit'
+          id='login'
         />
       </form>
 
@@ -41,17 +62,6 @@ const Login = () => {
 
     </div>
   </section>
- )
-}
-
-const LoginInput = ({ type, placeholder, value, id }) => {
- return (
-    <input
-     type={type}
-     placeholder={placeholder}
-     value={value}
-     id={id}
-    />
  )
 }
 

@@ -1,7 +1,10 @@
-body {
+body, html {
  padding: 0;
  margin: 0;
  font-family: 'Montserrat', sans-serif;
+ background-image: linear-gradient(to bottom right, #BF40BF, #5D3FD3);
+ background-repeat: no-repeat;
+ background-size: cover;
 }
 
 :root {
@@ -11,17 +14,19 @@ body {
 
 
 /*=========================================================
-LOGIN_PAGE STYLES
+                    LOGIN_PAGE STYLES
 ==========================================================*/
 #login-container,
 #signup-container {
- background-image: linear-gradient(to bottom right, #BF40BF, #5D3FD3);
  background-repeat: no-repeat;
  display: flex;
  flex-direction: column;
  align-items: center;
  justify-content: center;
- height: 100vh;
+}
+
+#login-container {
+  height: 100vh;
 }
 
 .login-container {
@@ -71,21 +76,23 @@ LOGIN_PAGE STYLES
  border-radius: 5px;
 }
 
-.signup-info {
+.signup-info,
+.login-info {
  margin: 2rem;
  font-size: .8rem;
  display: flex;
  justify-content:  center;
 }
 
-.login-container span {
+.login-container span,
+.signup-container span {
  color: #5D3FD3;
  font-weight: bold;
  margin-left: .5rem;
 }
 
 /*=========================================================
-SIGNUP_PAGE STYLES
+                      SIGNUP_PAGE STYLES
 ==========================================================*/
 .signup-container {
  border: 2px solid #fff;
@@ -163,7 +170,6 @@ SIGNUP_PAGE STYLES
  margin-top: 2rem;
 }
 
-
 @media screen and (min-width: 600px) {
 
  body,
@@ -174,7 +180,8 @@ SIGNUP_PAGE STYLES
 
 @media screen and (min-width: 1000px) {
 
- .login-container span {
+ .login-container span,
+ .signup-container span {
   cursor: pointer;
  }
 
