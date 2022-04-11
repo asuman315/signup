@@ -31,7 +31,7 @@ I was using code - to connect to the database - that was no longer supported in 
    Inside the server file (`server.js`);
     ```diff
     - app.use(cors());
-    + app.use(cors({ origin: ['http://localhost:5000', 'http://localhost:3000'], credentials: true }));
+    + app.use(cors({ origin: ['http://localhost:5000', 'http://localhost:3000']}));
     ```
 
 ### 3. My API server failed to run in heroku because of the bcrypt error...
@@ -47,5 +47,43 @@ I was using code - to connect to the database - that was no longer supported in 
   ```
   
   After looking spending several minutes looking for a solution, I found an [answer on stack overflow](https://stackoverflow.com/questions/15809611/bcrypt-invalid-elf-header-when-running-node-app/68204439#68204439?newreg=7399f7da25c348aaaa2f02f9a8bde257)
+
+  ### 4. Errors kept on crashing my server - because Express didn’t handle them for me.
+
+  I was using asynchronous javascript logic to add data to the database. I needed to catch the errors manually using the try-catch block and invoke my 'error handler middleware' using the `next()` function. 
+
+  ```diff
+     - const signup = async (req, res) => {
+   const { firstname, lastname, email, password } = req.body
+   const user = await User.create({ ...req.body })
+   const token = user.createJWT()
+   res.status(StatusCodes.CREATED).json({ user: { firstname: user.firstname, lastname: user.lastname }, token })
+}
+
+ +  const signup = async (req, res, next) => {
+  try {
+   const { firstname, lastname, email, password } = req.body
+   const user = await User.create({ ...req.body })
+   const token = user.createJWT()
+   res.status(StatusCodes.CREATED).json({ user: { firstname: user.firstname, lastname: user.lastname }, token })
+  } catch (error) {
+    next(error)
+  }
+}
+```
+This was the [source were I got most of what I wanted](https://scoutapm.com/blog/express-error-handling)
+
+## Lessons Learned
+###1. *Errors will always crash the server* hence bring everything down if not handled properly. I thought I would get away with not handling errors properly lol.
+
+###2. *Fundamental understanding of middleware and how it functions - in a nut shell*. 
+ - Middleware are essentialy functions that run between when the server recieves a request and before a response fires to the client.
+  - They are triggered sequentially (top to bottom) based on their sequence in code.
+  - They operate until the process exits, or the response has been sent back to the client.
+  - The `next()` function is used to call the next middleware function in a sequence.
+  - `res, req, next, error` must be passed to the Error handler middleware function for express to know that the function is an 'error handler'! Or else, it won't be invoked.
+  - `error` must be passed into the `next()` function - like so `error(error)` - if the error handler middleware is to be invoked.
+
+###3 Express catches errors automatcally if code is synchronous. Express won't handle errors automatically during asynchronous code execution. The developer needs to catch their errors.
 
 

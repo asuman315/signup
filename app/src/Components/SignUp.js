@@ -4,8 +4,8 @@ import axios from 'axios'
 
 const SignUp = () => {
   
-  const [firstname, setFirstname] = useState('asuman')
-  const [lastname, setLastname] = useState('ssendegeya')
+  const [firstname, setFirstname] = useState('')
+  const [lastname, setLastname] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [retypePassword, setRetypePassword] = useState('')
@@ -20,7 +20,12 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
    try {
-    const response = await axios.post('http://localhost:5000/auth/signup', user);
+     const response = await axios.post('https://asuman-auth-app-api.herokuapp.com/auth/signup', JSON.stringify(user),
+     { 
+        headers: { 'content-Type': 'application/json' },
+        withCredentials: true 
+     }
+    );
     //console.log(response.data);
     const accessToken = response?.data?.token;
     //console.log(accessToken);
@@ -30,7 +35,7 @@ const SignUp = () => {
      setPassword('')
      setRetypePassword('')
    } catch (error) {
-      console.log(error.message);
+      console.log(error);
    }
   }
   
