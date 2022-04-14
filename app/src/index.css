@@ -2,9 +2,6 @@ body, html {
  padding: 0;
  margin: 0;
  font-family: 'Montserrat', sans-serif;
- background-image: linear-gradient(to bottom right, #BF40BF, #5D3FD3);
- background-repeat: no-repeat;
- background-size: cover;
 }
 
 :root {
@@ -18,11 +15,14 @@ body, html {
 ==========================================================*/
 #login-container,
 #signup-container {
+ background-image: linear-gradient(to bottom right, #BF40BF, #5D3FD3);
+ background-size: cover;
  background-repeat: no-repeat;
  display: flex;
  flex-direction: column;
  align-items: center;
  justify-content: center;
+ height: 100vh;
 }
 
 #login-container {
@@ -53,7 +53,7 @@ body, html {
  background-color: transparent;
  outline: none;
  font-size: 1rem;
- padding: 0.5rem;
+ padding: 0.5rem 0;
  width: 100%;
  margin-bottom: 1rem;
  color: var(--clr-primary-2);
@@ -125,7 +125,7 @@ body, html {
  border-bottom: 1px solid black;
  background-color: transparent;
  outline: none;
- font-size: 1rem;
+ font-size: .8rem;
  padding: .5rem 0;
  width: 47%;
  margin-bottom: 1rem;
@@ -146,7 +146,7 @@ body, html {
  border-bottom: 1px solid black;
  background-color: transparent;
  outline: none;
- font-size: 1rem;
+ font-size: .8rem;
  padding: 0.5rem 0;
  margin-bottom: 1rem;
  color: var(--clr-primary-2);
@@ -167,9 +167,91 @@ body, html {
  outline: none;
  text-transform: uppercase;
  letter-spacing: 1px;
- margin-bottom: 2rem;
- margin-top: 2rem;
+ margin: 1rem 0;
 }
+
+/*Alert message styles*/
+.alert {
+  font-size: .8rem;
+  padding: .5rem;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  margin: 0;
+  font-weight: 400;
+  color: white;
+}
+
+.alert-success {
+  background-color: hsl(120, 88%, 85%);
+}
+
+.alert-failed {
+  background-color: hsl(0, 88%, 92%);
+  color: hsl(0, 88%, 45%);
+  border: 2px solid hsl(0, 88%, 45%);
+}
+
+/* Password wrapper styles */
+.password-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+}
+
+#password-eye {
+  position: absolute; 
+  right: 1rem; 
+}
+
+/* Loader Styles */
+.loader {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    background-color: hsl(240, 88%, 95%);
+    z-index: 1;
+    bottom: 0;
+  }
+
+/*=========================================================
+                    HOME_PAGE STYLES
+==========================================================*/
+.home-page-container {
+  background-image: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-page-container h1 {
+  text-align: center;
+  color: var(--clr-primary-2);
+}
+
+.home-page-container button {
+    width: 200px;
+    margin: 2rem auto;
+    background-color: var(--clr-primary-1);
+    color: white;
+    padding: 1rem;
+    font-size: 1.3rem;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    
+}
+
+.signup-container #sign-up {
+   border: 1rem 0;
+}
+   
 
 @media screen and (min-width: 600px) {
 
@@ -182,7 +264,8 @@ body, html {
 @media screen and (min-width: 1000px) {
 
  .login-container span,
- .signup-container span {
+ .signup-container span,
+ #password-eye {
   cursor: pointer;
  }
 
@@ -196,6 +279,26 @@ body, html {
   font-size: 1.2rem;
   cursor: pointer;
  }
+
+.login-container #login:hover,
+.signup-container #signup:hover {
+  background-color: hsl(240, 88%, 95%);
+  color: black;
+  border: 3px solid var(--clr-primary-2);
+  background-image: none;
+  transition: 200ms ease-in-out;
+}
+
+.home-page-container button:hover {
+   background-color: hsl(240, 88%, 95%);
+   color: black;
+   border: 2px solid var(--clr-primary-2);
+}
+
+.home-page-container button {
+  cursor: pointer;
+}
+
 }
 
 @media screen and (min-width: 1400px) {

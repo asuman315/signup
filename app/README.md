@@ -31,7 +31,7 @@ I was using code - to connect to the database - that was no longer supported in 
    Inside the server file (`server.js`);
     ```diff
     - app.use(cors());
-    + app.use(cors({ origin: ['http://localhost:5000', 'http://localhost:3000']}));
+    + app.use(cors({ origin: ['http://localhost:5000', 'http://localhost:3000', 'https://asuman315.github.io'], credentials: true]}));
     ```
 
 ### 3. My API server failed to run in heroku because of the bcrypt error...
