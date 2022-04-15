@@ -1,5 +1,42 @@
 
 
+# Authentication React Application 
+
+## Overview
+My challenge was to build out an authentication functionality where users could sign up for an account and then later logi
+
+I had to build an API and connect it to the react front-end. 
+
+I wanted to sharpen my backend skills in Nodejs, Expressjs, Mongoose and Mongodb.
+
+### The challenge
+
+Users should be able to:
+
+- Sign up for an account
+- Have their input info validated to prevent entering wrong information and crashing the API server.
+- Login using information they used to signup.
+- Users had to be shown appropriate messages when they enter invalid or wrong information. The messages had to be easy to understand.
+
+### Links
+
+- Live Site URL: [Add live site URL here](https://asuman315.github.io/Signup/)
+
+## My process
+
+### Built with
+
+- Front-end
+  - Reactjs
+  - Axios
+- Back-end
+  - Nodejs
+  - Expressjs
+- Database
+  - Mongodb
+  - Mongoose
+  - Mongo Atlas Cloud
+- Mobile-first workflow
 
 ##Challenges.
 ### 1. I could not connect to mongodb database because of the error `MongoParseError: options useCreateIndex, useFindAndModify are not supported`
@@ -27,8 +64,8 @@ I was using code - to connect to the database - that was no longer supported in 
    So the user's data for signing up couldn't be stored in the database. After looking at several solutions to the challenge and  several failed attempts, I realised that it was because;
    - 1. I was not running the server in the backend so I was getting... `network error`. Pretty obvious, uhh?
    - 2. Cors was blocking the local url - running on `http://localhost:3000`. So my front-end requests were not reaching the server.
-   Solution? Setting allowed origins in Cors. Here was my [resource](https://stackoverflow.com/questions/45980173/react-axios-network-error)
-   Inside the server file (`server.js`);
+   Solution? Setting allowed origins in Cors. Here was my [resource.](https://stackoverflow.com/questions/45980173/react-axios-network-error)
+   Inside the server file `server.js`;
     ```diff
     - app.use(cors());
     + app.use(cors({ origin: ['http://localhost:5000', 'http://localhost:3000', 'https://asuman315.github.io'], credentials: true]}));
@@ -42,8 +79,8 @@ I was using code - to connect to the database - that was no longer supported in 
   
   import `bcryptjs` package inside the `models` file
   ```diff
-   - const bcrypt = require('bcrypt');
-   + const bcryptjs = require('bcryptjs');
+  - const bcrypt = require('bcrypt');
+  + const bcryptjs = require('bcryptjs');
   ```
   
   After looking spending several minutes looking for a solution, I found an [answer on stack overflow](https://stackoverflow.com/questions/15809611/bcrypt-invalid-elf-header-when-running-node-app/68204439#68204439?newreg=7399f7da25c348aaaa2f02f9a8bde257)
@@ -74,9 +111,10 @@ I was using code - to connect to the database - that was no longer supported in 
 This was the [source were I got most of what I wanted](https://scoutapm.com/blog/express-error-handling)
 
 ## Lessons Learned
-###1. *Errors will always crash the server* hence bring everything down if not handled properly. I thought I would get away with not handling errors properly lol.
+### 1. Errors will always crash the server hence bring everything down if not handled properly. 
+I thought I would get away with not handling errors properly lol.
 
-###2. *Fundamental understanding of middleware and how it functions - in a nut shell*. 
+### 2. Fundamental understanding of middleware and how it functions - in a nut shell. 
  - Middleware are essentialy functions that run between when the server recieves a request and before a response fires to the client.
   - They are triggered sequentially (top to bottom) based on their sequence in code.
   - They operate until the process exits, or the response has been sent back to the client.
@@ -84,6 +122,19 @@ This was the [source were I got most of what I wanted](https://scoutapm.com/blog
   - `res, req, next, error` must be passed to the Error handler middleware function for express to know that the function is an 'error handler'! Or else, it won't be invoked.
   - `error` must be passed into the `next()` function - like so `error(error)` - if the error handler middleware is to be invoked.
 
-###3 Express catches errors automatcally if code is synchronous. Express won't handle errors automatically during asynchronous code execution. The developer needs to catch their errors.
+### 3. Express catches errors automatcally if code is synchronous. 
+
+  Express won't handle errors automatically during asynchronous code execution. The developer needs to catch their errors.
+
+### 4. Creating a loading screen.
+   So users can easily know if the app is running after pressing a button.
+   While fetching data from the database, there is always some delay so users need not to be left hanging during that period. It helps create a good user experince.
+
+
+## Way Forward
+
+I faced a lot of challenges and frustrations while doing this project. Nonetheless, I learned a ton of valuable lessons which I'm going to apply in my next projects.
+
+My confidence in software development has also increased so I'm to work on a more challenging full-stack application where users can Create, Read, Update and Delete content.
 
 
