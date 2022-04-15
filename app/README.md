@@ -74,9 +74,9 @@ I was using code - to connect to the database - that was no longer supported in 
 This was the [source were I got most of what I wanted](https://scoutapm.com/blog/express-error-handling)
 
 ## Lessons Learned
-###1. *Errors will always crash the server* hence bring everything down if not handled properly. I thought I would get away with not handling errors properly lol.
+### 1. *Errors will always crash the server* hence bring everything down if not handled properly. I thought I would get away with not handling errors properly lol.
 
-###2. *Fundamental understanding of middleware and how it functions - in a nut shell*. 
+### 2. *Fundamental understanding of middleware and how it functions - in a nut shell*. 
  - Middleware are essentialy functions that run between when the server recieves a request and before a response fires to the client.
   - They are triggered sequentially (top to bottom) based on their sequence in code.
   - They operate until the process exits, or the response has been sent back to the client.
@@ -84,6 +84,6 @@ This was the [source were I got most of what I wanted](https://scoutapm.com/blog
   - `res, req, next, error` must be passed to the Error handler middleware function for express to know that the function is an 'error handler'! Or else, it won't be invoked.
   - `error` must be passed into the `next()` function - like so `error(error)` - if the error handler middleware is to be invoked.
 
-###3 Express catches errors automatcally if code is synchronous. Express won't handle errors automatically during asynchronous code execution. The developer needs to catch their errors.
+### 3 Express catches errors automatcally if code is synchronous. Express won't handle errors automatically during asynchronous code execution. The developer needs to catch their errors.
 
 
