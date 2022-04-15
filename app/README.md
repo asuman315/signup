@@ -16,7 +16,7 @@ Users should be able to:
 - Sign up for an account.
 - Have their input info validated to prevent entering wrong information and crashing the API server.
 - Login using information they used to signup.
-- Users had to be shown appropriate messages when they enter invalid or wrong information. The messages had to be easy to understand.
+- Users had to be shown appropriate messages when they enter invalid or wrong information. The messages had to be easy to understand to provide a better user experince.
 
 ### Links
 
@@ -65,11 +65,7 @@ I was using code - to connect to the database - that was no longer supported in 
    - 1. I was not running the server in the backend so I was getting... `network error`. Pretty obvious, uhh?
    - 2. Cors was blocking the local url - running on `http://localhost:3000`. So my front-end requests were not reaching the server.
    Solution? Setting allowed origins in Cors. Here was my [resource.](https://stackoverflow.com/questions/45980173/react-axios-network-error)
-<<<<<<< HEAD
    Inside the server file `server.js`;
-=======
-   Inside the server file (`server.js`);
->>>>>>> bd687603ae1ab70239dfa2ee0bd8953009f04ae8
     ```diff
     - app.use(cors());
     + app.use(cors({ origin: ['http://localhost:5000', 'http://localhost:3000', 'https://asuman315.github.io'], credentials: true]}));
@@ -116,16 +112,10 @@ I was using code - to connect to the database - that was no longer supported in 
 This was the [source were I got most of what I wanted](https://scoutapm.com/blog/express-error-handling)
 
 ## Lessons Learned
-<<<<<<< HEAD
 ### 1. Errors will always crash the server hence bring everything down if not handled properly. 
 I thought I would get away with not handling errors properly lol.
 
 ### 2. Fundamental understanding of middleware and how it functions - in a nut shell. 
-=======
-### 1. *Errors will always crash the server* hence bring everything down if not handled properly. I thought I would get away with not handling errors properly lol.
-
-### 2. *Fundamental understanding of middleware and how it functions - in a nut shell*. 
->>>>>>> bd687603ae1ab70239dfa2ee0bd8953009f04ae8
  - Middleware are essentialy functions that run between when the server recieves a request and before a response fires to the client.
   - They are triggered sequentially (top to bottom) based on their sequence in code.
   - They operate until the process exits, or the response has been sent back to the client.
@@ -133,13 +123,12 @@ I thought I would get away with not handling errors properly lol.
   - `res, req, next, error` must be passed to the Error handler middleware function for express to know that the function is an 'error handler'! Or else, it won't be invoked.
   - `error` must be passed into the `next()` function - like so `error(error)` - if the error handler middleware is to be invoked.
 
-<<<<<<< HEAD
 ### 3. Express catches errors automatcally if code is synchronous. 
 
   Express won't handle errors automatically during asynchronous code execution. The developer needs to catch their errors.
 
 ### 4. Creating a loading screen.
-   So users can easily know if the app is running after pressing a button.
+   So users can easily know if the app is running after pressing a button to help provide a better user experince.
    While fetching data from the database, there is always some delay so users need not to be left hanging during that period. It helps create a good user experince.
 
 
@@ -148,8 +137,5 @@ I thought I would get away with not handling errors properly lol.
 I faced a lot of challenges and frustrations while doing this project. Nonetheless, I learned a ton of valuable lessons which I'm going to apply in my next projects.
 
 My confidence in web development has also increased. That is super important to me since I'm going to work on a more challenging full-stack application where users can Create, Read, Update and Delete content.
-=======
-### 3 Express catches errors automatcally if code is synchronous. Express won't handle errors automatically during asynchronous code execution. The developer needs to catch their errors.
->>>>>>> bd687603ae1ab70239dfa2ee0bd8953009f04ae8
 
 
