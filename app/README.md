@@ -38,12 +38,14 @@ Users should be able to:
   - Mongo Atlas Cloud
 - Mobile-first workflow
 
-##Challenges.
+## Challenges.
+
 ### 1. I could not connect to mongodb database because of the error `MongoParseError: options useCreateIndex, useFindAndModify are not supported`
 
 I was using code - to connect to the database - that was no longer supported in newer versions of mongoose. (version 6 and above)
 
 *Code:* 
+
    ```diff
    - const connectDB = (url) => {
     return mongoose.connect(url, {
@@ -62,10 +64,13 @@ I was using code - to connect to the database - that was no longer supported in 
 ### 2. Could not connect my front-end to the back-end.
 
    So the user's data for signing up couldn't be stored in the database. After looking at several solutions to the challenge and  several failed attempts, I realised that it was because;
+
    - 1. I was not running the server in the backend so I was getting... `network error`. Pretty obvious, uhh?
+
    - 2. Cors was blocking the local url - running on `http://localhost:3000`. So my front-end requests were not reaching the server.
    Solution? Setting allowed origins in Cors. Here was my [resource.](https://stackoverflow.com/questions/45980173/react-axios-network-error)
    Inside the server file `server.js`;
+
     ```diff
     - app.use(cors());
     + app.use(cors({ origin: ['http://localhost:5000', 'http://localhost:3000', 'https://asuman315.github.io'], credentials: true]}));
@@ -78,7 +83,8 @@ I was using code - to connect to the database - that was no longer supported in 
 
   I had to re-run `npm install bcryptjs` and... 
   
-  import `bcryptjs` package inside the `models` file
+  import `bcryptjs` package inside the `models` file like so...
+ 
   ```diff
   - const bcrypt = require('bcrypt');
   + const bcryptjs = require('bcryptjs');
@@ -88,7 +94,9 @@ I was using code - to connect to the database - that was no longer supported in 
 
   ### 4. Errors kept on crashing my server - because Express didn’t handle them for me.
 
-  I was using asynchronous javascript logic to add data to the database. I needed to catch the errors manually using the try-catch block and invoke my 'error handler middleware' using the `next()` function. 
+  I was using asynchronous javascript logic to add data to the database. 
+  
+  I needed to catch the errors manually using the try-catch block and invoke my 'error handler middleware' using the `next()` function. 
 
   ```diff
  - const signup = async (req, res) => {
@@ -112,6 +120,7 @@ I was using code - to connect to the database - that was no longer supported in 
 This was the [source were I got most of what I wanted](https://scoutapm.com/blog/express-error-handling)
 
 ## Lessons Learned
+
 ### 1. Errors will always crash the server hence bring everything down if not handled properly. 
 I thought I would get away with not handling errors properly lol.
 
@@ -123,12 +132,13 @@ I thought I would get away with not handling errors properly lol.
   - `res, req, next, error` must be passed to the Error handler middleware function for express to know that the function is an 'error handler'! Or else, it won't be invoked.
   - `error` must be passed into the `next()` function - like so `error(error)` - if the error handler middleware is to be invoked.
 
-### 3. Express catches errors automatcally if code is synchronous. 
+### 3. Express catches errors automatcally only if code is synchronous. 
 
   Express won't handle errors automatically during asynchronous code execution. The developer needs to catch their errors.
 
 ### 4. Creating a loading screen.
    So users can easily know if the app is running after pressing a button to help provide a better user experince.
+  
    While fetching data from the database, there is always some delay so users need not to be left hanging during that period. It helps create a good user experince.
 
 
