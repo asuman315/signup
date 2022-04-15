@@ -27,7 +27,7 @@ I was using code - to connect to the database - that was no longer supported in 
    So the user's data for signing up couldn't be stored in the database. After looking at several solutions to the challenge and  several failed attempts, I realised that it was because;
    - 1. I was not running the server in the backend so I was getting... `network error`. Pretty obvious, uhh?
    - 2. Cors was blocking the local url - running on `http://localhost:3000`. So my front-end requests were not reaching the server.
-   Solution? Setting allowed origins in Cors. Here was my [resource](https://stackoverflow.com/questions/45980173/react-axios-network-error)
+   Solution? Setting allowed origins in Cors. Here was my [resource.](https://stackoverflow.com/questions/45980173/react-axios-network-error)
    Inside the server file (`server.js`);
     ```diff
     - app.use(cors());
