@@ -34,7 +34,7 @@ I was using code - to connect to the database - that was no longer supported in 
     + app.use(cors({ origin: ['http://localhost:5000', 'http://localhost:3000', 'https://asuman315.github.io'], credentials: true]}));
     ```
 
-### 3. My API server failed to run in heroku because of the bcrypt error...
+###3. My API server failed to run in heroku because of the bcrypt error...
   'bcrypt invalid elf header'
   *Solution:* I fixed the error by switching from `bcrypt` to `bcryptjs` npm library.
 
@@ -53,7 +53,7 @@ I was using code - to connect to the database - that was no longer supported in 
   I was using asynchronous javascript logic to add data to the database. I needed to catch the errors manually using the try-catch block and invoke my 'error handler middleware' using the `next()` function. 
 
   ```diff
-     - const signup = async (req, res) => {
+  - const signup = async (req, res) => {
    const { firstname, lastname, email, password } = req.body
    const user = await User.create({ ...req.body })
    const token = user.createJWT()
